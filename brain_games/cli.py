@@ -13,7 +13,5 @@ def welcome_user():
     print(f"Hello,{name}!")
     return name
 
-def play():
-    attempts =3
 
 

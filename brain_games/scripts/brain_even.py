@@ -1,9 +1,10 @@
 import random, prompt
 from brain_games.cli import generate_num
 
-attempts = 3
+
 
 def check(answer,num):
+    result =False
     even = num % 2 ==0 
     odd = num % 2 !=0
     if answer=="yes" and even or answer=="no" and odd:
@@ -11,6 +12,7 @@ def check(answer,num):
     return result
 
 def generate_question():
+    attempts=3
     while attempts!=0:
         num =  generate_num()
         print (f"Question: {num}?")
@@ -23,9 +25,9 @@ def generate_question():
                 print("Congratulations")
         else:
             print ("You loose!")
+            break
            
 def main():
-
     print ("Answer \'yes\' if the number is even, otherwise answer \'no\'.")
     generate_question()
     
