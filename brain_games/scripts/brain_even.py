@@ -1,34 +1,34 @@
 import random, prompt
-MIN =1
-MAX = 99
-def generate_num():
-    return random.randint(MIN,MAX)
-   
+from brain_games.cli import generate_num
 
+attempts = 3
 
+def check(answer,num):
+    even = num % 2 ==0 
+    odd = num % 2 !=0
+    if answer=="yes" and even or answer=="no" and odd:
+        result = True
+    return result
 
-ATTEMPTS = 3
-        
-
-def check_answer():
-    attempts = 3
+def generate_question():
     while attempts!=0:
         num =  generate_num()
-        print (f"{num}?")
+        print (f"Question: {num}?")
         answer = prompt.string("Your answer:")
-        if answer =="yes" and num % 2 ==0 or answer =="no" and num % 2 !=0: 
-            print ("correct!")
+        result =  check(answer, num)
+        if result:
+            print ("Correct!")
             attempts-=1
-            if attempts==0:print("congratulations!")
-        else: 
-            print("you loose!")
-            break
-
-      
+            if attempts==0:
+                print("Congratulations")
+        else:
+            print ("You loose!")
+           
 def main():
 
     print ("Answer \'yes\' if the number is even, otherwise answer \'no\'.")
-    check_answer()
+    generate_question()
+    
 
 
     
